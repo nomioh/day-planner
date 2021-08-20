@@ -1,4 +1,4 @@
-console.log(document);
+// console.log(document);
 
 // variable for storing schedule times
 let hours = [
@@ -58,8 +58,8 @@ let hours = [
   },
 ];
 
-init();
-laodDayPlanner();
+// init();
+// loadDayPlanner();
 
 function getCurrentDate() {
   let date = moment().format("MMMM Do YYYY");
