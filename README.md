@@ -1,2 +1,1 @@
-# day-planner
-Third-party APIs
+# Work Day Scheduler Starter Code
