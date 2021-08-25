@@ -1,3 +1,5 @@
+const e = require("express");
+
 console.log(document);
 
 // variable for storing schedule times
@@ -88,10 +90,26 @@ hours.forEach(function (hour) {
   });
 });
 
-varHoursPlan = $("<div>").attr({ class: "col-md-9 description p-0" });
+var HoursPlan = $("<div>").attr({ class: "col-md-9 description p-0" });
 
-varPlanDatas = $("<textarea>");
+var planData = $("<textarea>");
 hourPLan.append(planData);
+planData.attr("id", hours.id);
+
+if (hours.time < moment().format("HH")) {
+  planData.attr({
+    class: "past",
+  });
+} else if (thisHours.time === moment().format("HH")) {
+  planData.attr({
+    class: "present",
+  });
+} else if (thisHour.time > moment().format("HH")) {
+  planData.attr({
+    class: "future",
+  });
+}
+
 // var currentHour = moment().hours();
 // var meetingInfo = $("#meeting-info");
 // header date
