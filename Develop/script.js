@@ -1,4 +1,4 @@
-// console.log(document);
+console.log(document);
 
 // variable for storing schedule times
 let hours = [
@@ -63,11 +63,36 @@ let hours = [
 
 function getCurrentDate() {
   let date = moment().format("MMMM Do YYYY");
+  $("#currentDate").text(getCurrentDate);
 
-  $("#currentDate").text(date);
-
-  console.log(date);
+  // console.log(date);
 }
 
+// saves tasks in local storage
+function saveTasks() {
+  localStorage.setItem("dailytask", JSON.stringify(dailyTask));
+}
+
+// creates calender
+hours.forEach(function (hour) {
+  let hourRow = document.createElement("form");
+
+  hourRow.classList = "row row2";
+  hourRow.innerText = hour.hoursText;
+
+  $(".container").append(hourRow);
+
+  // time feild
+  let hoursField = $("<div>").text(`${hour.hours}${hour.meridiem}`).attr({
+    class: "col-md-2 hours",
+  });
+});
+
+varHoursPlan = $("<div>").attr({ class: "col-md-9 description p-0" });
+
+varPlanDatas = $("<textarea>");
+hourPLan.append(planData);
 // var currentHour = moment().hours();
 // var meetingInfo = $("#meeting-info");
+// header date
+getCurrentDate();
