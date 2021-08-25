@@ -3,7 +3,7 @@ const e = require("express");
 console.log(document);
 
 // variable for storing schedule times
-let hours = [
+let hour = [
   {
     id: "0",
     hoursText: "9 am",
@@ -72,7 +72,14 @@ function getCurrentDate() {
 
 // saves tasks in local storage
 function saveTasks() {
-  localStorage.setItem("dailytask", JSON.stringify(dailyTask));
+  localStorage.setItem("dailytask", JSON.stringify(myHour));
+}
+
+// sets data in local storage to the page
+function displayTasks() {
+  myHour.forEach(function (_thisHour) {
+    $(`#${_thisHour.id}`).val(_thisHour.reminder);
+  });
 }
 
 // creates calender
@@ -85,7 +92,7 @@ hours.forEach(function (hour) {
   $(".container").append(hourRow);
 
   // time feild
-  let hoursField = $("<div>").text(`${hour.hours}${hour.meridiem}`).attr({
+  let hourField = $("<div>").text(`${hour.hours}${hour.meridiem}`).attr({
     class: "col-md-2 hours",
   });
 });
@@ -94,13 +101,13 @@ var HoursPlan = $("<div>").attr({ class: "col-md-9 description p-0" });
 
 var planData = $("<textarea>");
 hourPLan.append(planData);
-planData.attr("id", hours.id);
+planData.attr("id", hour.id);
 
-if (hours.time < moment().format("HH")) {
+if (hour.time < moment().format("HH")) {
   planData.attr({
     class: "past",
   });
-} else if (thisHours.time === moment().format("HH")) {
+} else if (thisHour.time === moment().format("HH")) {
   planData.attr({
     class: "present",
   });
