@@ -64,22 +64,31 @@ let hour = [
 // loadDayPlanner();
 
 function getCurrentDate() {
-  let date = moment().format("MMMM Do YYYY");
+  let currentDate = moment().format("dddd, MMMM Do");
   $("#currentDate").text(getCurrentDate);
 
   // console.log(date);
 }
 
 // saves tasks in local storage
-function saveTasks() {
+function saveTask() {
   localStorage.setItem("dailytask", JSON.stringify(myHour));
 }
 
 // sets data in local storage to the page
-function displayTasks() {
+function displayTask() {
   myHour.forEach(function (_thisHour) {
     $(`#${_thisHour.id}`).val(_thisHour.reminder);
   });
+}
+
+function init() {
+  var storedHour = JSON.parse(localStorage.getItem("myHour"));
+  if (storedHour) {
+    myHour = storedHour;
+  }
+  saveTask();
+  displayTask();
 }
 
 // creates calender
@@ -97,7 +106,7 @@ hours.forEach(function (hour) {
   });
 });
 
-var HoursPlan = $("<div>").attr({ class: "col-md-9 description p-0" });
+var HourPlan = $("<div>").attr({ class: "col-md-9 description p-0" });
 
 var planData = $("<textarea>");
 hourPLan.append(planData);
