@@ -126,7 +126,7 @@ if (hour.time < moment().format("HH")) {
   });
 }
 
+getCurrentDate();
 // var currentHour = moment().hours();
 // var meetingInfo = $("#meeting-info");
 // header date
-getCurrentDate();
